@@ -253,7 +253,6 @@ npm i -D lint-staged @commitlint/types @commitlint/cli @commitlint/config-conven
   ],
   "rules": {
     "react-native/no-inline-styles": "error", // Rule to disable inline styles
-    "react-native/no-raw-text": "error", // Rule to force use words in a Text tag
     "react-hooks/rules-of-hooks": "error", // Rules of hooks
     "react/react-in-jsx-scope": "off", // Rule for allows the use of a TSX or JSX component without the need to import React
     "react/jsx-uses-react": "off",
