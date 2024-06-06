@@ -1,6 +1,6 @@
 # ReactNativeRules 📁
 
-Pokedex first/second generation
+Rules to linters (React Native and TypeScript), prettier, husky and commitlint
 
 - This project was generated with [React Native](https://reactnative.dev) version 0.74.2
 
