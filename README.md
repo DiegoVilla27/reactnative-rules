@@ -527,6 +527,11 @@ watchman watch-del-all
 watchman watch-project /project-url-relative
 ```
 
+> If you have eslint error **`(Error: .eslintrc.json » @react-native/eslint-config#overrides[3]: Environment key "jest/globals" is unknown)`**:
+```bash
+npm i eslint-plugin-jest -D
+```
+
 ## Developer 👨🏻‍💻
 
 > Developed By: **`Diego Villa`**. - Website: [https://www.cabuweb.com](https://www.cabuweb.com)
