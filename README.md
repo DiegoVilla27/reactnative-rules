@@ -434,6 +434,15 @@ module.exports = Configuration
 Jest to testing application
 [Go to ↪](https://jestjs.io/docs/getting-started)
 
+- Script (Executes all unit tests):
+  ```bash
+  "test": "jest --coverage"
+  ```
+- Script (Executes a single unit test):
+  ```bash
+  "test:one": "jest --coverage --collectCoverageFrom='your-url-relative-component-here' --watch your-url-relative-component-here"
+  ```
+
 ## Aliases 🗣️
 
 Configuration to import files

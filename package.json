@@ -9,12 +9,13 @@
     "start:clean": "npm start -- --reset-cache",
     "build": "react-native eject",
     "doctor": "react-native doctor",
-    "test": "jest",
     "prepare": "husky install",
     "prettier": "prettier . --write",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
-    "lint:staged": "npx lint-staged"
+    "lint:staged": "npx lint-staged",
+    "test": "jest --coverage",
+    "test:one": "jest --coverage --collectCoverageFrom='src/App.test.tsx' --watch src/App.test.tsx"
   },
   "dependencies": {
     "react": "18.2.0",
