@@ -521,6 +521,12 @@ npm i -D react-native-eject
 "start:clean": "npm start -- --reset-cache"
 ```
 
+> If you have a watchman warning `(**warning: Watchman watch-project**)`:
+```bash
+watchman watch-del-all
+watchman watch-project /project-url-relative
+```
+
 ## Developer 👨🏻‍💻
 
 > Developed By: **`Diego Villa`**. - Website: [https://www.cabuweb.com](https://www.cabuweb.com)
