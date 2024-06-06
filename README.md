@@ -1,11 +1,11 @@
-# ReactNativePokemon 📁
+# ReactNativeRules 📁
 
 Pokedex first/second generation
 
 - This project was generated with [React Native](https://reactnative.dev) version 0.74.2
 
 ```bash
-npx react-native init reactnativePokemon --template react-native-template-typescript
+npx react-native init reactnativeRules --template react-native-template-typescript
 ```
 
 - React - Version 18.2.0
@@ -93,10 +93,13 @@ Install and Configure Husky (Git Hooks)
 ```bash
 npm i -D husky
 ```
+
 - Script and Execute (This command will create the _`.husky`_ folder in the root directory):
+
 ```bash
 "prepare": "husky install"
 ```
+
 - Create a Git Hook for `commit-msg` to run a regular expression validator (CommitLint) before each commit:
   - Execute command (Old version):
     ```bash
@@ -215,6 +218,7 @@ npm i -D lint-staged @commitlint/types @commitlint/cli @commitlint/config-conven
 ```
 
 - Create file _`.eslintrc.json`_
+
 ```json
 {
   "root": true,
@@ -244,13 +248,7 @@ npm i -D lint-staged @commitlint/types @commitlint/cli @commitlint/config-conven
       "version": "detect"
     }
   },
-  "plugins": [
-    "react-refresh",
-    "@typescript-eslint",
-    "react",
-    "react-native",
-    "html"
-  ],
+  "plugins": ["react-refresh", "@typescript-eslint", "react", "react-native", "html"],
   "rules": {
     "react-native/no-inline-styles": "error", // Rule to disable inline styles
     "react-hooks/rules-of-hooks": "error", // Rules of hooks
@@ -259,7 +257,8 @@ npm i -D lint-staged @commitlint/types @commitlint/cli @commitlint/config-conven
     "react/jsx-uses-vars": "error", // Rule for disallow use var
     "react/hook-use-state": "error", // Rule to check whether unstructured value and setter variables in a useState() call are named symmetrically
     "react/jsx-key": "error", // Rule for using Keys in Child Elements within Loops
-    "quotes": [ // Rule for using double quotes
+    "quotes": [
+      // Rule for using double quotes
       "error",
       "double",
       {
@@ -275,32 +274,36 @@ npm i -D lint-staged @commitlint/types @commitlint/cli @commitlint/config-conven
         "allowTemplateLiterals": true
       }
     ],
-    "eqeqeq": [ // Rule for strict equality (=== or !==)
+    "eqeqeq": [
+      // Rule for strict equality (=== or !==)
       "error",
       "smart"
     ],
-    "no-console": [ // Rule to avoid using console statements
+    "no-console": [
+      // Rule to avoid using console statements
       "error"
     ],
-    "no-else-return": [ // Rule to disallow else as a return
+    "no-else-return": [
+      // Rule to disallow else as a return
       "error",
       {
         "allowElseIf": true
       }
     ],
-    "no-empty": [ // Rule to disallow empty blocks
+    "no-empty": [
+      // Rule to disallow empty blocks
       "error",
       {
         "allowEmptyCatch": false
       }
     ],
-    "no-extra-semi": [ // Rule to disallow extra semicolons
+    "no-extra-semi": [
+      // Rule to disallow extra semicolons
       "error"
     ],
-    "@typescript-eslint/no-extra-semi": [
-      "error"
-    ],
-    "semi": [ // Rule to ensure there is a semicolon at the end
+    "@typescript-eslint/no-extra-semi": ["error"],
+    "semi": [
+      // Rule to ensure there is a semicolon at the end
       "error",
       "always",
       {
@@ -322,6 +325,7 @@ npm i -D lint-staged @commitlint/types @commitlint/cli @commitlint/config-conven
 ```
 
 - Create file _`.lintstagedrc`_
+
 ```json
 {
   "**/*.{js,jsx,ts,tsx}": ["prettier --write", "eslint"]
@@ -335,13 +339,13 @@ npm i -D lint-staged @commitlint/types @commitlint/cli @commitlint/config-conven
 - Script (Fixes errors reported by the linter):
   ```bash
   "lint:fix": "eslint --fix ."
-  ``` 
+  ```
 - Script (Executes the linter for files staged for commit):
   ```bash
   "lint:staged": "npx lint-staged"
   ```
-  
 - Create file _`commitlint.config.ts`_
+
 ```typescript
 import type { UserConfig } from "@commitlint/types"
 import { RuleConfigSeverity } from "@commitlint/types"
@@ -425,9 +429,62 @@ const Configuration: UserConfig = {
 module.exports = Configuration
 ```
 
+## Testing 🧪
+
+Jest to testing application
+[Go to ↪](https://jestjs.io/docs/getting-started)
+
+## Aliases 🗣️
+
+Configuration to import files
+
+- Add in _`tsconfig.json`_ within `compilerOptions`:
+
+```json
+/* Alias */
+"baseUrl": ".",
+"paths": {
+  "@/*": ["src/*"],
+  "@components/*": ["src/components/*"],
+  "@otherFolder/*": ["src/otherFolder/*"]
+}
+```
+
+- Install
+```bash
+npm i -D babel-plugin-module-resolver
+```
+
+Add in _`babel.config.js`_:
+
+```js
+plugins: [
+  [
+    "module-resolver",
+    {
+      root: ["./src"],
+      alias: {
+        "@": "./src",
+        "@helpers": "./src/helpers"
+      },
+      extensions: [".js", ".jsx", ".json", ".tsx", ".ts"]
+    }
+  ]
+]
+```
+
+- Add in _`jest.config.js`_
+```js
+moduleNameMapper: {
+  "^@components/(.*)$": "<rootDir>/src/components/$1",
+  "^@otherFolder/(.*)$": "<rootDir>/src/otherFolder/$1"
+}
+```
+
 ## Errors or Tips ❗️
 
 > If iOS doesn’t execute (to update cocoa pods)
+
 ```bash
 cd ios
 pod install
@@ -436,11 +493,24 @@ pod install
 > To disable `@apply error scss` for _Tailwind CSS_ in VSCode, add the following script to your _.vscode > settings.json_: _`"scss.lint.unknownAtRules": "ignore"`_
 
 > If Husky isn't working on MacOS, execute the command (within the root project):
+
 ```bash
 chmod ug+x .husky/*
 ```
 
 > To view prettified console objects in testing, use the following syntax: `console.log(JSON.stringify(obj, undefined, 2));`
+
+> If you deleted ios/android folder, then:
+
+```bash
+"build": "react-native eject"
+npm i -D react-native-eject
+```
+
+> If you need clear cache to metro:
+```bash
+"start:clean": "npm start -- --reset-cache"
+```
 
 ## Developer 👨🏻‍💻
 

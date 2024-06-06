@@ -1,4 +1,4 @@
-package com.reactnativepokemon
+package com.reactnativerules
 
 import android.app.Application
 import com.facebook.react.PackageList
